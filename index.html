@@ -1,14 +1,25 @@
-<input type="file" id="file?>
-<input type="text" id="text">
-<script>
-document.getElementById("file").addEventListener("change", handleUpload);
-let text = document. getElementById("text");
-function handleUpload(event) {
-let f = event.files[0];
-let reader = new FileReader();
-reader.onload = (file => e => {
- text.value = e.target.result;
-})(f);
-reader.readAsText(f);
-}
-</script>
+<!doctype HTML>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>File upload</title>
+    </head>
+    <body>
+        <input type="file" id="file" />
+        <input type="text" id="text" />
+
+        <script>
+            document.getElementById("file").addEventListener("change", handleUpload);
+            let text = document.getElementById("text");
+
+            function handleUpload(event) {
+                let fileBlob = event.files[0];
+                let reader = new FileReader();
+                reader.addEventListener("load", () => {
+                    text.value = reader.result;
+                });
+                reader.readAsText(fileBlob);
+            }
+        </script>
+    </body>
+</html>
