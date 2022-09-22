@@ -1,0 +1,14 @@
+<input type="file" id="file?>
+<input type="text" id="text">
+<script>
+document.getElementById("file").addEventListener("change", handleUpload);
+let text = document. getElementById("text");
+function handleUpload(event) {
+let f = event.files[0];
+let reader = new FileReader();
+reader.onload = (file => e => {
+ text.value = e.target.result;
+})(f);
+reader.readAsText(f);
+}
+</script>
